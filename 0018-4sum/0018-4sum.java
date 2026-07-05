@@ -22,6 +22,10 @@ class Solution {
         }
         return new ArrayList<>(ans);
         */
+
+        // optimal solution
+        // T.C = O(n*n*n)
+        // S.C = O(number of quadruplets)
         List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(nums);
         for(int i = 0; i<n; i++){  
