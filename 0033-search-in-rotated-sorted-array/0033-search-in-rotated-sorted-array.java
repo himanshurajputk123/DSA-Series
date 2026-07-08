@@ -42,18 +42,14 @@ class Solution {
 
     public int search(int[] nums, int target) {
         int n = nums.length;
+        
+        /*
         int pivot = pivotIndex(nums);
 
         if (pivot == -1) {
             return binarySearch(nums, 0, n - 1, target);
         }
-        // else if(n == 0){
-        //     return -1;
-        // }
         else {
-            // if(n == 1){
-            //     return binarySearch(nums, 0, 0, target);
-            // }
 
             // Array1 me binary search apply kr do 
             int s1 = 0;
@@ -68,10 +64,36 @@ class Solution {
             int e2 = n - 1;
             if (target >= nums[s2] && target <= nums[e2]) {
                 return binarySearch(nums, s2, e2, target);
-
             }
         }
-
         return -1;
+        */
+
+        // this is more cleaner way of doing it
+        // instead of searching for pivot and all
+        int s = 0;
+        int e = n - 1;
+        while(s <= e){
+            int mid = s + (e - s)/2;
+            if(target == nums[mid]){
+                return mid;
+            }            
+            // left half is sorted or not
+            if(nums[s] <= nums[mid]){
+                // check if target is in left half or not
+                if(target >= nums[s] && target < nums[mid]){
+                    e = mid - 1;
+                } else s = mid + 1;
+            }
+            // right half is sorted
+             else{
+                if(target > nums[mid] && target <= nums[e]){
+                    s = mid + 1;
+                } else e = mid - 1;
+            }
+        }
+        return -1;
+
+
     }
 }
