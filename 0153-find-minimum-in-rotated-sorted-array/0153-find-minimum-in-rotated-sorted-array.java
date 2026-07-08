@@ -5,13 +5,15 @@ class Solution {
         int s = 0;
         int e = n - 1;
 
-        if (nums[s] < nums[e]) {
-            ans = nums[s];
-            return ans;
-        }
 
         while( s <= e){
             int mid = s + (e - s)/2;
+
+            if(nums[s] <= nums[e]){
+                ans = Math.min(ans, nums[s]);
+                break;
+            }
+
             if(nums[s] <= nums[mid]){
                 ans = Math.min(ans, nums[s]);
                 s = mid + 1;
