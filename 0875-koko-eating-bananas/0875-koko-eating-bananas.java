@@ -32,7 +32,7 @@ class Solution {
                 max = num;
             }
         }
-    // Using Binary Search
+    // Using Binary Search On Answers
         int s = 1;
         int e = max;
         int ans = Integer.MAX_VALUE;
