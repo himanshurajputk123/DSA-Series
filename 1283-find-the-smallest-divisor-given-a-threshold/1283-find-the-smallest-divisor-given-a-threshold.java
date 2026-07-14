@@ -1,4 +1,7 @@
 class Solution {
+// exact same as Koko Eating Banana Question
+// even code is as it is copy paste
+
     static int solve(int[] piles, int hours){
         int n = piles.length;
         int totalHrs = 0;
@@ -40,8 +43,10 @@ class Solution {
             int mid = s + (e - s)/2;
             int totalHrs = solve(nums, mid);
 
+            
             if(totalHrs <= threshold){
                 ans = mid;
+                // we need minimum that's why move end = mid - 1;
                 e = mid - 1;
             } else s = mid + 1;
         }
