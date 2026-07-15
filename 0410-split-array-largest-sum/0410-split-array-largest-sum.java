@@ -1,4 +1,6 @@
 class Solution {
+    // same as Allocation of Book's && Painter's Partition Problem
+    // see gfg's for their code
     static boolean isValidAns(int[] nums, int k, int maxSum){
         int n = nums.length;
 
