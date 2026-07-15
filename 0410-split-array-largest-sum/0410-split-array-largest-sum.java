@@ -24,19 +24,20 @@ class Solution {
     }
     public int splitArray(int[] nums, int k) {
         int n = nums.length;
-        int s = 0;
 
         int sum = 0;
+        int maxi = -1;
         for(int i = 0; i < n; i++){
             sum += nums[i];
+            maxi = Math.max(maxi, nums[i]);
         }
 
+        int s = maxi;
         int e = sum;
         int ans = -1;
 
         while(s<=e){
             int mid = s + (e-s)/2;
-
             if(isValidAns(nums, k, mid)){
                 ans = mid;
                 e = mid - 1;
