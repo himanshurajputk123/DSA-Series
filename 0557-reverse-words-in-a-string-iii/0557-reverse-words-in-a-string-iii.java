@@ -18,7 +18,7 @@ class Solution {
 
     // T.C => O(n) S.C => O(n);
     public String reverseWords(String s) {
-        /*
+
         StringBuilder sb = new StringBuilder();
         int n = s.length();
         int i = 0;
@@ -38,7 +38,7 @@ class Solution {
             }
         }
         return sb.toString();
-        */
-        return bruteForce(s);
+        
+    //    return bruteForce(s);
     }
 }
