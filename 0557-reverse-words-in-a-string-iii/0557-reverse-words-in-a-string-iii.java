@@ -1,12 +1,24 @@
 class Solution {
+    // T.C => O(n) S.C => O(n);
+    // but this brute 'coz we're doing split causing 
+    // temporary memory objects creation and then adding back
     public String bruteForce(String s){
         // 1. split string word wise
+        String [] ans = s.split(" ");
+        
         // 2. reverse the word
-        // 3. join the reversed words
+        for(int i = 0; i<ans.length; i++){
+            StringBuilder sb = new StringBuilder(ans[i]);
+            ans[i] = sb.reverse().toString();
+        // 3. join the reversed words   
+        }
         // 4. return joined string
-        return s;
+        return String.join(" ", ans);
     }
+
+    // T.C => O(n) S.C => O(n);
     public String reverseWords(String s) {
+        /*
         StringBuilder sb = new StringBuilder();
         int n = s.length();
         int i = 0;
@@ -26,5 +38,7 @@ class Solution {
             }
         }
         return sb.toString();
+        */
+        return bruteForce(s);
     }
 }
