@@ -1,6 +1,7 @@
 class Solution {
     // Brute Force ==> Generates all substrings 
     // and checks which one is largest odd number
+    // T.C = O(n * n);
     public String largestOddNumber(String num) {
         // this is optimal solution
         // T.C = O(n) and S.C = O(1)
