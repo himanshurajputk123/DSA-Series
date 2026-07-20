@@ -27,11 +27,7 @@ class Solution {
 
         for (int col = 0; col < first.length(); col++) {
             for (int row = 1; row < n; row++) {
-                if (col == strs[row].length()) {
-                    return first.substring(0, col);
-                }
-                // now check col wise if they're same or not
-                if (first.charAt(col) != strs[row].charAt(col)) {
+                if (col == strs[row].length() || first.charAt(col) != strs[row].charAt(col)) {
                     return first.substring(0, col);
                 }
             }
