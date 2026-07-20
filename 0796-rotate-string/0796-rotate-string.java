@@ -22,11 +22,11 @@ class Solution {
     public boolean rotateString(String s, String goal) {
         
             // both space and time complexity => O(n)
-        // if(s.length() != goal.length()){
-        //     return false;
-        // }
-        // return (s + s).contains(goal); // O(n)
+        if(s.length() != goal.length()){
+            return false;
+        }
+        return (s + s).contains(goal); // O(n)
 
-        return bruteForce(s, goal);
+        //return bruteForce(s, goal);
     }
 }
