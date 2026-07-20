@@ -1,6 +1,8 @@
 class Solution {
     public boolean bruteForce(String s, String goal){
         // bruteForce is rotate characters of string one by one
+        // T.C => O(n * n)
+        // S.C => O(n) currentString ki vjh se
 
         if(s.length() != goal.length()){
             return false;
