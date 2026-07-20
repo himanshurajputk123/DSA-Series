@@ -1,5 +1,7 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
+        // T.C = O(n)
+        // S.C = O(n)
         HashMap<Character, Character> mapST = new HashMap<>();
         HashMap<Character, Character> mapTS = new HashMap<>();
         if(s.length() == t.length()){
@@ -10,7 +12,7 @@ class Solution {
                     }
                     mapST.put(s.charAt(i), t.charAt(i));
                     mapTS.put(t.charAt(i), s.charAt(i)); 
-                } else{
+                }else{
                     // check whether this key is storing same or different one?
                     if(mapST.get(s.charAt(i)) != t.charAt(i) 
                     || mapTS.get(t.charAt(i)) != s.charAt(i)){
@@ -18,7 +20,7 @@ class Solution {
                     }
                 }
             }
-        } 
+        }
         return true;
     }
 }
