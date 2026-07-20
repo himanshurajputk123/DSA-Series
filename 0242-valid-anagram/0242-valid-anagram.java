@@ -23,7 +23,7 @@ class Solution {
             return false;
         }
 
-        int[] freq = new int[26]; // assuming lowercase a-z
+        int[] freq = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
             freq[s.charAt(i) - 'a']++;
@@ -41,9 +41,34 @@ class Solution {
 
     public boolean isAnagram(String s, String t) {
         //return isBruteForce(s, t);
-        return isOptimal(s, t);
+        //return isOptimal(s, t);
         // now think of Optimal solution
         // do wee really need sorting>? NO, we only need the number of times a character is appearing that's it. Which leads to Use of HashMap;
 
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+
+            // Increase count for character from s
+            char ch1 = s.charAt(i);
+            map.put(ch1, map.getOrDefault(ch1, 0) + 1);
+
+            // Decrease count for character from t
+            char ch2 = t.charAt(i);
+            map.put(ch2, map.getOrDefault(ch2, 0) - 1);
+        }
+
+        // Every count should become 0
+        for (int count : map.values()) {
+            if (count != 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
