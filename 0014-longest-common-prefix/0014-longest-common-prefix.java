@@ -27,7 +27,12 @@ class Solution {
 
         for (int col = 0; col < first.length(); col++) {
             for (int row = 1; row < n; row++) {
-                if (col == strs[row].length() || first.charAt(col) != strs[row].charAt(col)) {
+                // we need not to generates all prefix
+                // we just need to compare col wise, upto which col
+                // values of col are same...return substring upto
+                // which cols have the same prefix
+                if(col == strs[row].length() || 
+                first.charAt(col) != strs[row].charAt(col)) {
                     return first.substring(0, col);
                 }
             }
