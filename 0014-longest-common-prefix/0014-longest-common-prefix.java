@@ -1,5 +1,5 @@
 class Solution {
-    public String longestCommonPrefix(String[] strs) {
+    public static String bruteForce(String[] strs) {
         String ans = "";
         String first = strs[0];
 
@@ -14,10 +14,29 @@ class Solution {
                     break;
                 }
             }
-            if(found){
+            if (found) {
                 ans = prefix;
             }
         }
         return ans;
+    }
+
+    public String longestCommonPrefix(String[] strs) {
+        int n = strs.length;
+        String first = strs[0];
+
+        for (int col = 0; col < first.length(); col++) {
+            for (int row = 1; row < n; row++) {
+                if (col == strs[row].length()) {
+                    return first.substring(0, col);
+                }
+                // now check col wise if they're same or not
+                if (first.charAt(col) != strs[row].charAt(col)) {
+                    return first.substring(0, col);
+                }
+            }
+        }
+        return first;
+        //return bruteForce(strs);
     }
 }
