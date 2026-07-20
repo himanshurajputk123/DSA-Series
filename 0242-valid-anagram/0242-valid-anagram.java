@@ -41,13 +41,14 @@ class Solution {
 
     public boolean isAnagram(String s, String t) {
         //return isBruteForce(s, t);
-        //return isOptimal(s, t);
+        return isOptimal(s, t);
 
         // now think of Optimal solution
         // do wee really need sorting>? NO, we only need the number of times a character is appearing that's it. Which leads to Use of HashMap;
 
         // T.C => O(n)
         // S.C => O(k) or O(1) if only lowercase characters that's only 26(fixed)
+/*        
         if (s.length() != t.length()) {
             return false;
         }
@@ -73,5 +74,6 @@ class Solution {
         }
 
         return true;
+*/
     }
 }
