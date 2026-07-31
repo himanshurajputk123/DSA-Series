@@ -22,18 +22,18 @@ class Solution {
                 half--;
             }
         }
-        //StringBuilder rev = new StringBuilder(sb).reverse();
+        StringBuilder rev = new StringBuilder(sb).reverse();
 
-        int leftLength = sb.length();
+        //int leftLength = sb.length();
         // there should be some condition around mid
         if(mid >= 'a' && mid <= 'z'){
             sb.append(mid);
         }
         // now just reverse copy and append to sb
-        for (int i = leftLength - 1; i >= 0; i--) {
-            sb.append(sb.charAt(i));
-        }
-        //sb.append(rev.toString());
+        // for (int i = leftLength - 1; i >= 0; i--) {
+        //     sb.append(sb.charAt(i));
+        // }
+        sb.append(rev.toString());
 
         return sb.toString();
     }
