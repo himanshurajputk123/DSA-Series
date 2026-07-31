@@ -22,8 +22,7 @@ class Solution {
                 half--;
             }
         }
-        String copy = new String();
-        copy = sb.toString();
+        StringBuilder rev = new StringBuilder(sb).reverse();
 
         // there should be some condition around mid
         if(mid >= 'a' && mid <= 'z'){
@@ -31,7 +30,7 @@ class Solution {
         }
         // now just reverse copy and append to sb
 
-        sb = sb.append(new StringBuilder(copy).reverse().toString());
+        sb = sb.append(rev.toString());
 
         return sb.toString();
     }
