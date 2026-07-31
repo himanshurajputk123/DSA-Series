@@ -18,19 +18,22 @@ class Solution {
             // add half
             int half = freq[i] / 2;
             while(half > 0){
-                sb = sb.append((char)('a' + i));
+                sb.append((char)('a' + i));
                 half--;
             }
         }
-        StringBuilder rev = new StringBuilder(sb).reverse();
+        //StringBuilder rev = new StringBuilder(sb).reverse();
 
+        int leftLength = sb.length();
         // there should be some condition around mid
         if(mid >= 'a' && mid <= 'z'){
-            sb = sb.append(mid);
+            sb.append(mid);
         }
         // now just reverse copy and append to sb
-
-        sb = sb.append(rev.toString());
+        for (int i = leftLength - 1; i >= 0; i--) {
+            sb.append(sb.charAt(i));
+        }
+        //sb.append(rev.toString());
 
         return sb.toString();
     }
