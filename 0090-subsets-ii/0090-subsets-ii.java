@@ -1,8 +1,7 @@
 class Solution {
     public static void helperFunc(int[] nums, int i, List<List<Integer>> ans, List<Integer> list){
         if(i == nums.length){
-            List<Integer> temp;
-            temp = list;
+            List<Integer> temp = new ArrayList<>(list);
             Collections.sort(temp);
             if(!ans.contains(temp)){
                 ans.add(new ArrayList<>(temp));
@@ -12,7 +11,6 @@ class Solution {
         // pick
         list.add(nums[i]);
         helperFunc(nums, i+1, ans, list);
-
 
         // not pick
         list.remove(list.size()-1);
@@ -34,9 +32,9 @@ class Solution {
 
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-        //helperFunc(nums, 0, ans, new ArrayList<>());
-        Arrays.sort(nums);
-        backtracker(nums, 0, ans, new ArrayList<>());
+        helperFunc(nums, 0, ans, new ArrayList<>());
+        //Arrays.sort(nums);
+        //backtracker(nums, 0, ans, new ArrayList<>());
 
         return ans;
     }
