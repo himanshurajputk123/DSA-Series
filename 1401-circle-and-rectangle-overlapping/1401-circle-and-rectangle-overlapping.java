@@ -6,7 +6,8 @@ class Solution {
         
     }
     public boolean checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {
-        
+        // if circle lies inside the rectangle
+        if((xCenter > x1 && xCenter < x2) && (yCenter > y1 && yCenter < y2)) return true;
 
         int closestX, closestY;
 
