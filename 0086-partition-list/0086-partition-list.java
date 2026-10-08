@@ -32,21 +32,9 @@ class Solution {
 
         }
         tempList.next = null;
-
         prev = dummyNode.next;
-
-        // while(temp.next != null){
-        //     if(temp.val >= x){
-        //         prev.next = list.next;
-        //         tempList.next = temp;
-
-        //     }else{
-        //         prev = temp;
-        //         temp = temp.next;
-        //     }
-        // }
-
         tempList.next = prev;
+        
         return list.next;
         //return head;
     }
