@@ -1,5 +1,15 @@
 class Solution {
-    public char findTheDifference(String s, String t) {
+    public char isOptimal(String s, String t){
+        char xor = 0;
+        for(char ch : s.toCharArray()){
+            xor ^= ch;
+        }
+        for(char ch : t.toCharArray()){
+            xor ^= ch;
+        }
+        return xor;
+    }
+    public static char isBoolean(String s, String t){
         int[] freq = new int[26];
 
         for (int i = 0; i < t.length(); i++) {
@@ -12,6 +22,9 @@ class Solution {
             if(freq[i] != 0) return (char)(i + 'a');
         }
         return '0';
+    }
+    public char findTheDifference(String s, String t) {
+        return isOptimal(s, t);
 
     }
 }
