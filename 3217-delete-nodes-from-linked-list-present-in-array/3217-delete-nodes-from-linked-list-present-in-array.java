@@ -9,13 +9,22 @@
  * }
  */
 class Solution {
-    // public boolean search(int[] nums, int x){
-    //     int n = nums.length;
-    //     for(int i = 0; i < n; i++){
-    //         if(nums[i] == x) return true;
-    //     }
-    //     return false;
-    // }
+    public ListNode optimalSol(int[] nums, ListNode head){
+        boolean[] seen = new boolean[100001];
+        
+        for (int i : nums) seen[i] = true;
+
+        ListNode dummy = new ListNode(0, head);
+        ListNode curr = dummy;
+
+        while (curr.next != null) {
+            if (seen[curr.next.val])
+                curr.next = curr.next.next;
+            else
+                curr = curr.next;
+        }
+        return dummy.next;
+    }
     public ListNode modifiedList(int[] nums, ListNode head) {
         if(head == null) return null;
 
@@ -26,7 +35,7 @@ class Solution {
         ListNode temp = head;
         ListNode prev = dummy;
         prev.next = temp;
-        
+
         while(temp != null){
             int val = temp.val;
             if(set.contains(val)){
@@ -40,5 +49,6 @@ class Solution {
         }
 
         return dummy.next;
+        //return optimalSol(nums, head);
     }
 }
