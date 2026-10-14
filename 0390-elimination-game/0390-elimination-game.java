@@ -34,7 +34,7 @@ class Solution {
         return helperFunc(a1, an, dis, cnt, i);
     }
     public int lastRemaining(int n) {
-        //return helperFunc(1, n, 1, n, 0);
-        return iterativeSol(n);
+        return helperFunc(1, n, 1, n, 0);
+        //return iterativeSol(n);
     }
 }
