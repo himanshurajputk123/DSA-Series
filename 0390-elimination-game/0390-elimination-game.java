@@ -12,29 +12,20 @@ class Solution {
         }
         return a1;
     }
-    public int helperFunc(int a1, int an, int dis, int cnt, int i) {
+    public int helperFunc(int a1, int dis, int cnt, int i) {
         if (cnt == 1) {
             return a1;
         }
 
         // Update the first remaining element
-        if (i == 0 || (cnt & 1) == 1) {
+        if (i == 1 || (cnt & 1) == 1) {
             a1 += dis;
         }
 
-        // Update the last remaining element
-        if (i == 1 || (cnt & 1) == 1) {
-            an -= dis;
-        }
-
-        dis *= 2;
-        cnt /= 2;
-        i = 1 - i;
-
-        return helperFunc(a1, an, dis, cnt, i);
+        return helperFunc(a1, dis*2, cnt/2, 1-i);
     }
     public int lastRemaining(int n) {
-        return helperFunc(1, n, 1, n, 0);
+        return helperFunc(1, 1, n, 1);
         //return iterativeSol(n);
     }
 }
