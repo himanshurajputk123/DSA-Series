@@ -10,11 +10,12 @@ class Solution {
 
                 if (left == 0 && right == 0) {
                     flowerbed[i] = 1;  // plant a flower
-                    count++;
+                    count++;                    
                     if(count >= n) return true;
                 }
             }
         }
         return count >= n; 
+        
     }
 }
