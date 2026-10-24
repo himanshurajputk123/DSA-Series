@@ -1,52 +1,60 @@
 class Solution {
-    public int[][] merge(int[][] intervals) {
-    /*   
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
-    
-        List<List<Integer>> ans = new ArrayList<>();
-    
+
+    public int[][] optimal(int[][] intervals) { 
         int n = intervals.length;
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        List<int[]> res = new ArrayList<>();
+
         int i = 0;
-    
         while (i < n) {
             int s = intervals[i][0];
             int e = intervals[i][1];
-    
+
             int j = i + 1;
-    
             while (j < n && intervals[j][0] <= e) {
                 e = Math.max(e, intervals[j][1]);
                 j++;
             }
-    
-            ans.add(Arrays.asList(s, e));
-    
+            res.add(new int[] { s, e });
             i = j;
-    
         }
-        int[][] result = new int[ans.size()][2];
-    
-        for (int k = 0; k < ans.size(); k++) {
-            result[k][0] = ans.get(k).get(0);
-            result[k][1] = ans.get(k).get(1);
-        }
-    
-        return result;
-    */
 
+        return res.toArray(new int[res.size()][]);
+
+    }
+
+    public int[][] striversApproach(int[][] intervals) {
+        List<int[]> res = new ArrayList<>();
+
+        if (intervals == null || intervals.length == 0) {
+            return res.toArray(new int[0][]);
+        }
+
+        // sorting according to its start
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
 
-        List<int[]> ans = new ArrayList<>();
+        int start = intervals[0][0];
+        int end = intervals[0][1];
 
-        for (int[] interval : intervals) {
-
-            if (ans.isEmpty() || interval[0] > ans.get(ans.size() - 1)[1]) {
-                ans.add(interval);
+        for (int[] i : intervals) {
+            if (i[0] <= end) {
+                end = Math.max(end, i[1]);
             } else {
-                ans.get(ans.size() - 1)[1] = Math.max(ans.get(ans.size() - 1)[1], interval[1]);
+                res.add(new int[] { start, end });
+                start = i[0];
+                end = i[1];
             }
         }
 
-        return ans.toArray(new int[ans.size()][]);
+        res.add(new int[] { start, end });
+
+        return res.toArray(new int[0][]);
+    }
+
+
+    public int[][] merge(int[][] intervals) {
+    // both solutions takes O(nlogn) TC and O(n) SC        
+        //return optimal(intervals);
+        return striversApproach(intervals);
     }
 }
