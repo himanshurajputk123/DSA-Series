@@ -64,14 +64,24 @@ class Solution {
         int m = nums2.length;
         int[] ans = new int[n];
         int[] result = nextLargerElement(nums2);
-        for(int i = 0; i < n; i++){
-            int ele = nums1[i];
-            for(int j = 0; j < m; j++){
-                if(ele == nums2[j]){
-                    ans[i] = result[j];
-                    break;
-                }
-            }
+        // for(int i = 0; i < n; i++){
+        //     int ele = nums1[i];
+        //     for(int j = 0; j < m; j++){
+        //         if(ele == nums2[j]){
+        //             ans[i] = result[j];
+        //             break;
+        //         }
+        //     }
+        // }
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums2.length; i++) {
+            map.put(nums2[i], result[i]);
+        }
+
+        for (int i = 0; i < n; i++) {
+            ans[i] = map.get(nums1[i]);
         }
         return ans;
     }
