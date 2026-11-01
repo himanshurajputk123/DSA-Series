@@ -1,4 +1,15 @@
 class Solution {
+    public int optimised(int[] nums){
+        int cnt = 0;
+        int max = Integer.MIN_VALUE;
+        for (int num :  nums){
+            if (num >= max){
+                max = num;
+                cnt++;
+            }
+        }
+        return cnt;
+    }
     public int maximumPossibleSize(int[] nums) {
         Stack<Integer> st = new Stack<>();
         int n = nums.length;
@@ -8,6 +19,7 @@ class Solution {
             }
             st.push(nums[i]);
         }
-        return st.size();
+        //return st.size();
+        return optimised(nums);
     }
 }
