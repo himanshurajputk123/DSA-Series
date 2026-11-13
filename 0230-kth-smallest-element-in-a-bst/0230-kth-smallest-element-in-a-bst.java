@@ -14,17 +14,25 @@
  * }
  */
 class Solution {
-
-    public void preOrderTraverse(TreeNode root, List<Integer> ls){
+    int ans = -1;
+    int cnt = 0;
+    // why inOrder? as inOrder gives us the sorted order of numbers
+    public void inOrder(TreeNode root, int k){
         if(root == null) return;
-        ls.add(root.val);
-        preOrderTraverse(root.left, ls);
-        preOrderTraverse(root.right, ls);
+        // left
+        inOrder(root.left, k);
+        // node
+        cnt++;
+        if(cnt == k) {
+            ans = root.val;
+            return;
+        }
+        // right
+        inOrder(root.right, k);
+        
     }
     public int kthSmallest(TreeNode root, int k) {
-        List<Integer> ls = new ArrayList<>();
-        preOrderTraverse(root, ls);
-        Collections.sort(ls);
-        return ls.get(k-1); // O(N + NlogN) // Extra space of O(N);
+        inOrder(root, k);
+        return ans;
     }
 }
