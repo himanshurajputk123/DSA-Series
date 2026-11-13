@@ -14,11 +14,17 @@
  * }
  */
 class Solution {
+    public TreeNode recursive(TreeNode root, int val){
+        if(root == null || root.val == val) return root;
+        if(root.val > val) return recursive(root.left, val);
+        else return recursive(root.right, val);
+    }
     public TreeNode searchBST(TreeNode root, int val) {
-        while(root != null){
-            if(root.val == val) return root;
-            root = val < root.val ? root.left : root.right;
-        }
-        return null;
+        // while(root != null){
+        //     if(root.val == val) return root;
+        //     root = val < root.val ? root.left : root.right;
+        // }
+        // return null;
+        return recursive(root, val);
     }
 }
